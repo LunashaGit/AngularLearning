@@ -9,9 +9,6 @@ export class ServerComponent implements OnInit {
   allowNewServer: boolean = false;
   serverName: string = '';
   constructor() {
-    setTimeout(() => {
-      this.allowNewServer = true;
-    },2000);
   }
 
   ngOnInit() {
@@ -27,6 +24,7 @@ export class ServerComponent implements OnInit {
 
   onUpdateServerName(event: Event){
     this.serverName = (<HTMLInputElement>event.target).value;
+    this.serverName !== "" ? this.allowNewServer = true : this.allowNewServer = false;
   }
 
 }
