@@ -8,8 +8,11 @@ type="text"
 [style]="{backgroundColor: getColor()}"
 (click)="onCreateServer()"
 >
-  Console
+  Create
 </button>
-
+<p *ngIf="serverCreated; else noServer">Server : {{serverName}} was created</p>
+<ng-template #noServer>
+  <p>No server was created!</p>
+</ng-template>
 
 
