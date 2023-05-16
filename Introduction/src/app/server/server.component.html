@@ -5,7 +5,7 @@ type="text"
 >
 <button
 [disabled]="!allowNewServer"
-[style]="{backgroundColor: getColor()}"
+[style.backgroundColor]="getColor()"
 (click)="onCreateServer()"
 >
   Create
