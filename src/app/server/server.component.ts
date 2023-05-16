@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ServerComponent implements OnInit {
   allowNewServer: boolean = false;
+  serverName: string = 'Example';
   constructor() {
     setTimeout(() => {
       this.allowNewServer = true;
@@ -14,7 +15,6 @@ export class ServerComponent implements OnInit {
   }
 
   ngOnInit() {
-
   }
 
   getColor() {
@@ -23,6 +23,10 @@ export class ServerComponent implements OnInit {
 
   onCreateServer() {
     console.log('Server was created!');
+  }
+
+  onUpdateServerName(event: Event){
+    this.serverName = (<HTMLInputElement>event.target).value;
   }
 
 }
