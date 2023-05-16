@@ -7,15 +7,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ServerComponent implements OnInit {
   allowNewServer: boolean = false;
-  css: string = 'red';
+  serverCreationStatus: string = 'No server was created!';
   constructor() {
     setTimeout(() => {
       this.allowNewServer = true;
-      this.css = 'green';
     },2000);
   }
 
   ngOnInit() {
+
+  }
+
+  getColor() {
+    return this.allowNewServer === true ? 'green' : 'red';
+  }
+
+
+  onCreateServer() {
+    this.serverCreationStatus = 'Server was created!';
   }
 
 }
