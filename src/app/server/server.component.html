@@ -1,3 +1,8 @@
+<input
+type="text"
+(input)="onUpdateServerName($event)"
+[(ngModel)]="serverName"
+>
 <button
 [disabled]="!allowNewServer"
 [style]="{backgroundColor: getColor()}"
@@ -5,12 +10,6 @@
 >
   Console
 </button>
-<input
-type="text"
-(input)="onUpdateServerName($event)"
-[(ngModel)]="serverName"
->
-{{serverName}}
 
 
 
