@@ -18,6 +18,12 @@ export class RecipeService {
       'https://assets.bonappetit.com/photos/5e4c58a55f0567000a32b827/1:1/w_3635,h_3635,c_limit/HLY_Vegan%20Alfredo_Lede.jpg',
       [new Ingredient('Potato', 2), new Ingredient('Tomato', 1)]
     ),
+    new Recipe(
+      'Chicken Sandwich',
+      'This is a Chicken Sandwich',
+      'https://assets.bonappetit.com/photos/5e4c58a55f0567000a32b827/1:1/w_3635,h_3635,c_limit/HLY_Vegan%20Alfredo_Lede.jpg',
+      [new Ingredient('Potato', 2), new Ingredient('Tomato', 1)]
+    ),
   ];
 
   getRecipes() {
