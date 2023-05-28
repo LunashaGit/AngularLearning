@@ -33,7 +33,10 @@ export class TaskService {
     this.http
       .put<Task>(`api/task/${this.tasks[index].id}`, newTask)
       .subscribe(() => {
-        this.tasks[index] = newTask;
+        this.tasks[index] = {
+          ...newTask,
+          id: this.tasks[index].id,
+        };
         this.tasksChanged.next(this.tasks.slice());
       });
   }

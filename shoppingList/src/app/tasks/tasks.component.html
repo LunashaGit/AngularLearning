@@ -9,7 +9,7 @@
         *ngFor="let task of tasks; let i = index"
         (click)="onEditItem(i)"
       >
-        {{ task.task_name + " " + task.task_description }}
+        {{ task.id + " " + task.task_name + " " + task.task_description }}
       </a>
     </ul>
   </div>
