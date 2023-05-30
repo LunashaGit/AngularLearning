@@ -18,6 +18,7 @@ import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component
 import { TasksComponent } from './tasks/tasks.component';
 import { TaskService } from './tasks/task.service';
 import { TaskEditComponent } from './tasks/task-edit/task-edit.component';
+import { TaskDetailsComponent } from './tasks/task-details/task-details.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,6 +34,7 @@ import { TaskEditComponent } from './tasks/task-edit/task-edit.component';
     RecipeEditComponent,
     TasksComponent,
     TaskEditComponent,
+    TaskDetailsComponent,
   ],
   imports: [
     BrowserModule,

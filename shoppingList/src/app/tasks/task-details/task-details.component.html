@@ -1,0 +1,8 @@
+<div class="row" *ngIf="isOpen">
+  <div class="col-xs-12" *ngIf="editedItem">
+    <hr />
+    <h1>{{ editedItem.task_name }}</h1>
+    <p>{{ editedItem.task_description }}</p>
+    <button class="btn" (click)="onClose()">close</button>
+  </div>
+</div>

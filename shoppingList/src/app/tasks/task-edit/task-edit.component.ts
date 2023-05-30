@@ -21,7 +21,6 @@ export class TaskEditComponent implements OnInit {
       this.editMode = true;
       this.editedItem = this.taskService.getTask(index);
       setTimeout(() => {
-        console.log(this.editedItem);
         this.taskForm.setValue({
           name: this.editedItem.task_name,
           description: this.editedItem.task_description,

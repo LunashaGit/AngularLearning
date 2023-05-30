@@ -16,14 +16,9 @@
         <a (click)="onEditItem(i)">
           {{ task.id + " " + task.task_name + " " + task.task_description }}
         </a>
-        <button class="btn" (click)="toggle()">View</button>
+        <button class="btn" (click)="toggle(i)">View</button>
       </li>
     </ul>
   </div>
 </div>
-<div class="row" *ngIf="isOpen">
-  <div class="col-xs-12">
-    <hr />
-    <h1>test</h1>
-  </div>
-</div>
+<app-task-details />

@@ -9,6 +9,8 @@ export class TaskService {
   tasksChanged = new Subject<Task[]>();
   tasks: Task[] = [];
   startedEditing = new Subject<number>();
+  isOpen = new Subject<boolean>();
+  Status = false;
   constructor(private http: HttpClient) {}
   getTasks() {
     this.http.get<Task[]>('api/task').subscribe((tasks: Task[]) => {
@@ -57,5 +59,10 @@ export class TaskService {
       this.tasks.splice(index, 1);
       this.tasksChanged.next(this.tasks.slice());
     });
+  }
+
+  updateOpenStatus() {
+    this.Status = !this.Status;
+    this.isOpen.next(this.Status);
   }
 }
