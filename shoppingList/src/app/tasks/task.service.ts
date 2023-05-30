@@ -10,7 +10,6 @@ export class TaskService {
   tasks: Task[] = [];
   startedEditing = new Subject<number>();
   constructor(private http: HttpClient) {}
-
   getTasks() {
     this.http.get<Task[]>('api/task').subscribe((tasks: Task[]) => {
       this.tasks = tasks;
@@ -22,11 +21,23 @@ export class TaskService {
     return this.tasks[index];
   }
 
-  addTask(task: Task) {
-    this.http.post<Task>('api/task', task).subscribe(() => {
-      this.tasks.push(task);
-      this.tasksChanged.next(this.tasks.slice());
+  fetchTask(id: number) {
+    return this.http.get<Task>(`api/task/${id}`).subscribe((task: Task) => {
+      console.log(task);
     });
+  }
+
+  addTask(task: Task) {
+    this.http
+      .post<Task>('api/task', task)
+      .subscribe((id: { messages: { id: number } } | any) => {
+        task = {
+          ...task,
+          id: id.messages.id,
+        };
+        this.tasks.push(task);
+        this.tasksChanged.next(this.tasks.slice());
+      });
   }
 
   updateTask(index: number, newTask: Task) {

@@ -20,10 +20,12 @@ export class TaskEditComponent implements OnInit {
       this.editedItemIndex = index;
       this.editMode = true;
       this.editedItem = this.taskService.getTask(index);
-      this.taskForm.setValue({
-        name: this.editedItem.task_name,
-        description: this.editedItem.task_description,
-      });
+      setTimeout(() => {
+        this.taskForm.setValue({
+          name: this.editedItem.task_name,
+          description: this.editedItem.task_description,
+        });
+      }, 0);
     });
   }
 

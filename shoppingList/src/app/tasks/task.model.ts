@@ -4,7 +4,6 @@ export class Task {
   public task_description: string;
   public created_at?: Date;
   public updated_at?: Date;
-
   constructor(
     task_name: string,
     task_description: string,

@@ -28,4 +28,8 @@ export class TasksComponent implements OnInit {
   onEditItem(id: number): void {
     this.taskService.startedEditing.next(id);
   }
+
+  onClick(id: number): void {
+    this.taskService.fetchTask(id);
+  }
 }
