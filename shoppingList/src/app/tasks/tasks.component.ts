@@ -10,6 +10,7 @@ import { Subscription } from 'rxjs';
 export class TasksComponent implements OnInit {
   tasks!: Task[];
   private subscription!: Subscription;
+  isOpen = false;
   constructor(private taskService: TaskService) {}
 
   ngOnInit() {
@@ -31,5 +32,9 @@ export class TasksComponent implements OnInit {
 
   onClick(id: number): void {
     this.taskService.fetchTask(id);
+  }
+
+  toggle() {
+    this.isOpen = !this.isOpen;
   }
 }

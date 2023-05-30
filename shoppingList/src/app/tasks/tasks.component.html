@@ -3,14 +3,27 @@
     <app-task-edit />
     <hr />
     <ul class="list-group">
-      <a
+      <li
         class="list-group-item"
-        style="cursor: pointer"
+        style="
+          cursor: pointer;
+          justify-content: space-between;
+          align-items: center;
+          display: flex;
+        "
         *ngFor="let task of tasks; let i = index"
-        (click)="onEditItem(i)"
       >
-        {{ task.id + " " + task.task_name + " " + task.task_description }}
-      </a>
+        <a (click)="onEditItem(i)">
+          {{ task.id + " " + task.task_name + " " + task.task_description }}
+        </a>
+        <button class="btn" (click)="toggle()">View</button>
+      </li>
     </ul>
+  </div>
+</div>
+<div class="row" *ngIf="isOpen">
+  <div class="col-xs-12">
+    <hr />
+    <h1>test</h1>
   </div>
 </div>
