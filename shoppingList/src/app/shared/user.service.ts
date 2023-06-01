@@ -9,8 +9,6 @@ import { Router } from '@angular/router';
 export class UserService {
   user = new Subject<User>();
   httpOptions: object = {};
-  // token: string | undefined =
-  //   sessionStorage.getItem('token') || '' || undefined;
   login(data: User) {
     return this.http
       .post('api/login', {
@@ -33,7 +31,6 @@ export class UserService {
             | any
         ) => {
           this.user.next(index.messages.user);
-          // this.token = index.messages.user.token;
           sessionStorage.setItem('token', index.messages.user.token);
           this.router.navigate(['/']);
         }
@@ -41,12 +38,6 @@ export class UserService {
   }
 
   constructor(private http: HttpClient, private router: Router) {
-    this.httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${sessionStorage.getItem('token')}`,
-      }),
-    };
     if (sessionStorage.getItem('token') !== null) {
       this.http
         .post('api/me', {}, this.httpOptions)
@@ -55,7 +46,7 @@ export class UserService {
         });
     }
   }
-
+  // sessionStorage
   logout() {
     return this.http.post('api/logout', {}, this.httpOptions).subscribe(() => {
       sessionStorage.removeItem('token');
