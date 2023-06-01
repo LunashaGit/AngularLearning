@@ -15,7 +15,7 @@
           <a routerLink="/tasks">Tasks</a>
         </li>
         <!-- <button (click)="isAuth()">test</button> -->
-        <ng-container *ngIf="!isAuth; else Auth">
+        <ng-container *ngIf="!userService.isAuth; else Auth">
           <li routerLinkActive="active">
             <a routerLink="/register">Register</a>
           </li>

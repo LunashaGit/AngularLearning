@@ -23,8 +23,9 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { UserService } from './shared/user.service';
 import { AuthInterceptor } from './shared/auth.interceptor';
+import { DashboardComponent } from './dashboard/dashboard.component';
 @NgModule({
-  declarations: [
+  declarations: [	
     AppComponent,
     HeaderComponent,
     RecipesComponent,
@@ -41,7 +42,8 @@ import { AuthInterceptor } from './shared/auth.interceptor';
     TaskDetailsComponent,
     LoginComponent,
     RegisterComponent,
-  ],
+      DashboardComponent
+   ],
   imports: [
     BrowserModule,
     AppRoutingModule,

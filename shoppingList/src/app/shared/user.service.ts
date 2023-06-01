@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 export class UserService {
   user = new Subject<User>();
   httpOptions: object = {};
+  isAuth: boolean = false;
   login(data: User) {
     return this.http
       .post('api/login', {
