@@ -19,6 +19,9 @@ import { TasksComponent } from './tasks/tasks.component';
 import { TaskService } from './tasks/task.service';
 import { TaskEditComponent } from './tasks/task-edit/task-edit.component';
 import { TaskDetailsComponent } from './tasks/task-details/task-details.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import { UserService } from './shared/user.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,6 +38,8 @@ import { TaskDetailsComponent } from './tasks/task-details/task-details.componen
     TasksComponent,
     TaskEditComponent,
     TaskDetailsComponent,
+    LoginComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,
@@ -43,7 +48,7 @@ import { TaskDetailsComponent } from './tasks/task-details/task-details.componen
     ReactiveFormsModule,
     HttpClientModule,
   ],
-  providers: [ShoppingListService, TaskService],
+  providers: [ShoppingListService, TaskService, UserService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

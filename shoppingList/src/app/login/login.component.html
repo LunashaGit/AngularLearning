@@ -1,0 +1,22 @@
+<h2>Login</h2>
+<form (ngSubmit)="login(f)" #f="ngForm">
+  <input
+    id="email"
+    type="email"
+    name="email"
+    placeholder="Email"
+    ngModel
+    required
+    #emailInput
+  />
+  <input
+    id="password"
+    type="password"
+    placeholder="Password"
+    name="password"
+    required
+    ngModel
+    #passwordInput
+  />
+  <button type="submit">Login</button>
+</form>

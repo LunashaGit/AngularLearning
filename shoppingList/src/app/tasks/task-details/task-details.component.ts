@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Directive, OnInit } from '@angular/core';
 import { TaskService } from '../task.service';
 import { Task } from '../task.model';
 @Component({
@@ -18,7 +18,6 @@ export class TaskDetailsComponent implements OnInit {
     });
     this.taskService.startedEditing.subscribe((index: number) => {
       this.editedItem = this.taskService.getTask(index);
-      console.log(this.editedItem);
     });
   }
 

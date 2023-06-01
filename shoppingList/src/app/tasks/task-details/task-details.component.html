@@ -1,8 +1,37 @@
-<div class="row" *ngIf="isOpen">
-  <div class="col-xs-12" *ngIf="editedItem">
+<!-- popup -->
+<div
+  class="row"
+  *ngIf="isOpen"
+  style="
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  "
+>
+  <div
+    class="col-xs-12"
+    *ngIf="editedItem"
+    style="
+      background: white;
+      border-radius: 5px;
+      padding: 20px;
+      width: 50%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    "
+  >
     <hr />
     <h1>{{ editedItem.task_name }}</h1>
     <p>{{ editedItem.task_description }}</p>
-    <button class="btn" (click)="onClose()">close</button>
+    <button class="btn btn-danger" (click)="onClose()">close</button>
   </div>
 </div>

@@ -14,6 +14,20 @@
         <li routerLinkActive="active">
           <a routerLink="/tasks">Tasks</a>
         </li>
+        <!-- <button (click)="isAuth()">test</button> -->
+        <ng-container *ngIf="!isAuth; else Auth">
+          <li routerLinkActive="active">
+            <a routerLink="/register">Register</a>
+          </li>
+          <li>
+            <a routerLink="/login">Login</a>
+          </li>
+        </ng-container>
+        <ng-template #Auth>
+          <li>
+            <a (click)="onLogout()">Logout</a>
+          </li>
+        </ng-template>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown" appDropdown>
