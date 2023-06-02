@@ -54,4 +54,21 @@ export class UserService {
       this.router.navigate(['/login']);
     });
   }
+
+  register(data: User) {
+    return this.http
+      .post<{
+        messages: {
+          user: {
+            id: number;
+            username: string;
+            email: string;
+            token: string;
+          };
+        };
+      }>('api/register', data)
+      .subscribe(() => {
+        this.router.navigate(['/login']);
+      });
+  }
 }

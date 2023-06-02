@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
+import { UserService } from '../shared/user.service';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -13,7 +14,11 @@ export class RegisterComponent implements OnInit {
   password: string = '';
   ngOnInit() {}
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+    private userService: UserService
+  ) {}
 
   register(form: NgForm): void {
     const userData = {
@@ -22,19 +27,6 @@ export class RegisterComponent implements OnInit {
       password: form.value.password,
     };
 
-    this.http
-      .post<{
-        messages: {
-          user: {
-            id: number;
-            username: string;
-            email: string;
-            token: string;
-          };
-        };
-      }>('api/register', userData)
-      .subscribe(() => {
-        this.router.navigate(['/login']);
-      });
+    this.userService.register(userData);
   }
 }
