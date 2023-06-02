@@ -15,27 +15,26 @@ export class RegisterComponent implements OnInit {
 
   constructor(private http: HttpClient, private router: Router) {}
 
-  register() {
+  register(form: NgForm): void {
     const userData = {
-      username: this.username,
-      email: this.email,
-      password: this.password,
+      username: form.value.username,
+      email: form.value.email,
+      password: form.value.password,
     };
 
     this.http
-      .post<any>('https://your-backend-url/register', userData)
-      .subscribe(
-        (response) => {
-          // Stockage des informations dans le local storage
-          localStorage.setItem('token', response.messages.user.token);
-          localStorage.setItem('username', response.messages.user.username);
-
-          // Redirection vers une autre page après l'inscription réussie
-          this.router.navigate(['/dashboard']);
-        },
-        (error) => {
-          console.log(error);
-        }
-      );
+      .post<{
+        messages: {
+          user: {
+            id: number;
+            username: string;
+            email: string;
+            token: string;
+          };
+        };
+      }>('api/register', userData)
+      .subscribe(() => {
+        this.router.navigate(['/login']);
+      });
   }
 }
