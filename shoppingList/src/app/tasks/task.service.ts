@@ -17,9 +17,8 @@ export class TaskService {
   constructor(private http: HttpClient) {}
   getTasks() {
     this.http
-      .get<TaskResponse>('api/taskuser')
+      .get<TaskResponse>('api/taskuser/user')
       .subscribe((tasks: TaskResponse) => {
-        console.log(tasks);
         this.tasks = tasks.data;
         this.tasksChanged.next(this.tasks.slice());
       });
@@ -37,11 +36,11 @@ export class TaskService {
 
   addTask(task: Task) {
     this.http
-      .post<Task>('api/task', task)
+      .post<Task>('api/taskuser', task)
       .subscribe((id: { messages: { id: number } } | any) => {
         task = {
           ...task,
-          id: id.messages.id,
+          id: id.data.id,
         };
         this.tasks.push(task);
         this.tasksChanged.next(this.tasks.slice());
@@ -50,7 +49,7 @@ export class TaskService {
 
   updateTask(index: number, newTask: Task) {
     this.http
-      .put<Task>(`api/task/${this.tasks[index].id}`, newTask)
+      .put<Task>(`api/taskuser/${this.tasks[index].id}`, newTask)
       .subscribe(() => {
         this.tasks[index] = {
           ...newTask,
@@ -61,10 +60,12 @@ export class TaskService {
   }
 
   deleteTask(index: number) {
-    this.http.delete<Task>(`api/task/${this.tasks[index].id}`).subscribe(() => {
-      this.tasks.splice(index, 1);
-      this.tasksChanged.next(this.tasks.slice());
-    });
+    this.http
+      .delete<Task>(`api/taskuser/${this.tasks[index].id}`)
+      .subscribe(() => {
+        this.tasks.splice(index, 1);
+        this.tasksChanged.next(this.tasks.slice());
+      });
   }
 
   updateOpenStatus() {
