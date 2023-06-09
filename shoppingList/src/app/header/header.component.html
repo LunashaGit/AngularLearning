@@ -11,23 +11,10 @@
         <li routerLinkActive="active">
           <a routerLink="/shopping-list">Shopping List</a>
         </li>
-        <li routerLinkActive="active">
+        <li routerLinkActive="active" *ngIf="userService.isAuth">
           <a routerLink="/tasks">Tasks</a>
         </li>
         <!-- <button (click)="isAuth()">test</button> -->
-        <ng-container *ngIf="!userService.isAuth; else Auth">
-          <li routerLinkActive="active">
-            <a routerLink="/register">Register</a>
-          </li>
-          <li>
-            <a routerLink="/login">Login</a>
-          </li>
-        </ng-container>
-        <ng-template #Auth>
-          <li>
-            <a (click)="onLogout()">Logout</a>
-          </li>
-        </ng-template>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown" appDropdown>
@@ -35,12 +22,19 @@
             >Manage <span class="caret"></span
           ></a>
           <ul class="dropdown-menu">
-            <li>
-              <a href="#">Save Data</a>
-            </li>
-            <li>
-              <a href="#">Fetch Data</a>
-            </li>
+            <ng-container *ngIf="!userService.isAuth; else Auth">
+              <li routerLinkActive="active">
+                <a routerLink="/register">Register</a>
+              </li>
+              <li>
+                <a routerLink="/login">Login</a>
+              </li>
+            </ng-container>
+            <ng-template #Auth>
+              <li>
+                <a (click)="onLogout()">Logout</a>
+              </li>
+            </ng-template>
           </ul>
         </li>
       </ul>
