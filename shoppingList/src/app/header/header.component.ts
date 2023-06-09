@@ -4,6 +4,7 @@ import {
   OnInit,
   Output,
   OnDestroy,
+  Injectable,
 } from '@angular/core';
 import { UserService } from '../shared/user.service';
 import { HttpClient } from '@angular/common/http';

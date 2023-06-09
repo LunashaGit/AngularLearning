@@ -2,6 +2,9 @@ import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { Task } from './task.model';
 import { HttpClient } from '@angular/common/http';
+type TaskResponse = {
+  data: Task[];
+};
 @Injectable({
   providedIn: 'root',
 })
@@ -13,10 +16,13 @@ export class TaskService {
   Status = false;
   constructor(private http: HttpClient) {}
   getTasks() {
-    this.http.get<Task[]>('api/task').subscribe((tasks: Task[]) => {
-      this.tasks = tasks;
-      this.tasksChanged.next(this.tasks.slice());
-    });
+    this.http
+      .get<TaskResponse>('api/taskuser')
+      .subscribe((tasks: TaskResponse) => {
+        console.log(tasks);
+        this.tasks = tasks.data;
+        this.tasksChanged.next(this.tasks.slice());
+      });
   }
 
   getTask(index: number) {
