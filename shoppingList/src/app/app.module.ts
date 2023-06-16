@@ -24,8 +24,11 @@ import { RegisterComponent } from './register/register.component';
 import { UserService } from './shared/user.service';
 import { AuthInterceptor } from './shared/auth.interceptor';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { UploadComponent } from './upload/upload.component';
+import { UploadService } from './upload/upload.service';
+import { UploadPostComponent } from './upload/upload-post/upload-post.component';
 @NgModule({
-  declarations: [	
+  declarations: [
     AppComponent,
     HeaderComponent,
     RecipesComponent,
@@ -42,8 +45,10 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     TaskDetailsComponent,
     LoginComponent,
     RegisterComponent,
-      DashboardComponent
-   ],
+    DashboardComponent,
+    UploadComponent,
+    UploadPostComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -60,6 +65,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
       useClass: AuthInterceptor,
       multi: true,
     },
+    UploadService,
   ],
   bootstrap: [AppComponent],
 })

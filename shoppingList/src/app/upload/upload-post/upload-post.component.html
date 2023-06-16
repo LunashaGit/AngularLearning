@@ -1,0 +1,28 @@
+<div class="row">
+  <div class="col-xs-12">
+    <form (ngSubmit)="onAddUpload(f)" #f="ngForm" enctype="multipart/form-data">
+      <div class="row">
+        <div class="col-sm-5 form-group">
+          <label for="image">File</label>
+          <input
+            type="file"
+            id="image"
+            class="form-control"
+            name="image"
+            ngModel
+            required
+            #imageInput
+            (change)="onFileSelected($event)"
+          />
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <button class="btn btn-success" type="submit" [disabled]="!f.valid">
+            Add
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

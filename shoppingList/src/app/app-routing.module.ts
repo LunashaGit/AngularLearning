@@ -8,6 +8,7 @@ import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component
 import { TasksComponent } from './tasks/tasks.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
+import { UploadComponent } from './upload/upload.component';
 const routes: Routes = [
   { path: '', redirectTo: 'recipes', pathMatch: 'full' },
   {
@@ -24,6 +25,7 @@ const routes: Routes = [
   { path: 'tasks', component: TasksComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'upload', component: UploadComponent },
 ];
 
 @NgModule({

@@ -1,0 +1,7 @@
+<app-upload-post></app-upload-post>
+
+<ul>
+  <li *ngFor="let image of images">
+    <img src="{{ image.image_url }}" alt="{{ image.image_name }}" />
+  </li>
+</ul>
